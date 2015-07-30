@@ -1,0 +1,5 @@
+name: MineChat
+main: org.twgogo.clouds.petjelinux.MineChat
+version: 1.04
+commands:
+  bind:
