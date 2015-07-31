@@ -43,8 +43,8 @@ public class CommandBind implements ICommand{
 		strar[1].replaceAll("_|", " ");
 		
 		try {
-			FileWriter fw=new FileWriter(bindfile);
-			fw.write(strar[0]+"|"+strar[1]);
+			FileWriter fw=new FileWriter(bindfile,true);
+			fw.write(strar[0]+"|"+strar[1]+"\n");
 			fw.flush();
 			fw.close();
 		} catch (IOException e) {}
@@ -53,11 +53,14 @@ public class CommandBind implements ICommand{
 
 	@Override
 	public void onTalk(String msg , Player player) {
+System.out.println("In0");
 		try {
 			BufferedReader br=new BufferedReader(new FileReader(bindfile));
 			while( br.readLine()!=null ){
+System.out.println("In1 " + br.readLine() + " " + br.readLine().split("|")[0] + "|");
 				String[] strresult=br.readLine().split("|");
 				if( msg.indexOf(strresult[0])!=-1 ){
+System.out.println("In2");
 					player.sendMessage(strresult[1]);
 				}
 			}

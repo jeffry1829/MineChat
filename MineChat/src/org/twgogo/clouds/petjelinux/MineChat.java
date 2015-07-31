@@ -26,8 +26,7 @@ public class MineChat extends JavaPlugin{
 	public void onDisable(){}
 	
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
-		while( it.hasNext() ){
-			ICommand el=it.next();
+		for(ICommand el : arraylist){
 			if( el.getName().equalsIgnoreCase(label) ){
 				el.Execute(sender , args);
 					return true;

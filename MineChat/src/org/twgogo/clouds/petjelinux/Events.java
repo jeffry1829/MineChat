@@ -9,10 +9,11 @@ public class Events implements Listener{
 	
 	@EventHandler
 	public void asyncchat(AsyncPlayerChatEvent event){
+System.out.println("At");
 		String msg=event.getMessage();
 		Player player=event.getPlayer();
-		while( MineChat.it.hasNext() ){
-			MineChat.it.next().onTalk(msg , player);
+		for(ICommand el : MineChat.arraylist){
+			el.onTalk(msg , player);
 		}
 	}
 	
