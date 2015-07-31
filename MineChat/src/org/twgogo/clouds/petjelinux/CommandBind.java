@@ -56,12 +56,20 @@ public class CommandBind implements ICommand{
 System.out.println("In0");
 		try {
 			BufferedReader br=new BufferedReader(new FileReader(bindfile));
-			while( br.readLine()!=null ){
-System.out.println("In1 " + br.readLine() + " " + br.readLine().split("|")[0] + "|");
-				String[] strresult=br.readLine().split("|");
-				if( msg.indexOf(strresult[0])!=-1 ){
+			
+			String strNum;
+			StringBuffer sb = new StringBuffer();
+			while ((strNum=br.readLine())!=null){
+			  sb.append(strNum);
+			}
+			
+			String[] a1 = sb.toString().split("\n");
+			for(String l1 : a1){	
+				String[] get=l1.split("|");
+System.out.println("In1 " + a1 + " " + get[0] + "|");
+				if( msg.indexOf(get[0])!=-1 ){
 System.out.println("In2");
-					player.sendMessage(strresult[1]);
+					player.sendMessage(get[1]);
 				}
 			}
 			br.close();
