@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class MineChat extends JavaPlugin{
 	
+<<<<<<< HEAD
 	ArrayList<ICommand> arraylist=new ArrayList<ICommand>();
 	Iterator<ICommand> it=arraylist.listIterator();
 		
@@ -25,6 +26,20 @@ getLogger().info("\\INIT/");
 		
 		getCommand("bind").setExecutor(this);
 		new Events(this);
+=======
+	static ArrayList<ICommand> arraylist=new ArrayList<ICommand>();
+	static Iterator<ICommand> it=arraylist.listIterator();
+	static{
+		try{
+		arraylist.add( (ICommand)new CommandBind() );
+		arraylist.add( (ICommand)new CommandExecute() );
+		}catch(Exception e1est){}
+	}
+
+	public void onEnable(){
+		getCommand("bind").setExecutor(this);
+		getServer().getPluginManager().registerEvents(new Events() , this);
+>>>>>>> ebdf1f1510643ecbb0a0c11c9514a28bac312620
 		getLogger().info(ColorCodes.RED+"MineChat Enable"+ColorCodes.RESET);
 	}
 	public void onDisable(){}

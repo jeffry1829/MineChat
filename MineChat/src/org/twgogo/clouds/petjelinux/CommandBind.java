@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 
 public class CommandBind implements ICommand{
 	
+<<<<<<< HEAD
 	MineChat minechat;
 	
 	File bindfile=new File(minechat.getDataFolder() + "/bindfile.bind");
@@ -19,17 +20,30 @@ public class CommandBind implements ICommand{
 	
 	public CommandBind(MineChat minechat) throws IOException{
 		this.minechat=minechat;
+=======
+	File bindfile=new File("./plugins/MineChat/bindfile.bind");
+	
+	public CommandBind() throws IOException{
+>>>>>>> ebdf1f1510643ecbb0a0c11c9514a28bac312620
 		
 		if( !(bindfile.exists()) ){
 			bindfile.getParentFile().mkdirs();
 			bindfile.createNewFile();
 		}
+<<<<<<< HEAD
+=======
+		
+>>>>>>> ebdf1f1510643ecbb0a0c11c9514a28bac312620
 	}
 	
 	@Override
 	public String getName() {
+<<<<<<< HEAD
 		final String name="bind";
 		return name;
+=======
+		return "bind";
+>>>>>>> ebdf1f1510643ecbb0a0c11c9514a28bac312620
 	}
 
 	@Override
@@ -57,6 +71,7 @@ public class CommandBind implements ICommand{
 
 	@Override
 	public void onTalk(String msg , Player player) {
+<<<<<<< HEAD
 	try {
 		BufferedReader br = new BufferedReader(new FileReader(bindfile));
 System.out.println(msg);
@@ -69,6 +84,29 @@ System.out.println(msg);
 		}
 		br.close();
 	}catch (Exception e) {}
+=======
+System.out.println("In0");
+		try {
+			BufferedReader br=new BufferedReader(new FileReader(bindfile));
+			
+			String strNum;
+			StringBuffer sb = new StringBuffer();
+			while ((strNum=br.readLine())!=null){
+			  sb.append(strNum);
+			}
+			
+			String[] a1 = sb.toString().split("\n");
+			for(String l1 : a1){	
+				String[] get=l1.split("|");
+System.out.println("In1 " + a1 + " " + get[0] + "|");
+				if( msg.indexOf(get[0])!=-1 ){
+System.out.println("In2");
+					player.sendMessage(get[1]);
+				}
+			}
+			br.close();
+		} catch (Exception e) {}
+>>>>>>> ebdf1f1510643ecbb0a0c11c9514a28bac312620
 	}
 
 }
